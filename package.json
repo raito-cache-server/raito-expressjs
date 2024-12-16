@@ -1,5 +1,5 @@
 {
-  "name": "@raito/expressjs",
+  "name": "@raito-cache/expressjs",
   "version": "0.0.1",
   "description": "API and middleware for expressjs to communicate with raito-cache server",
   "main": "dist/index.js",

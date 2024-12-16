@@ -4,18 +4,28 @@ import {
   IRaito,
   WsMessage,
   WsResult,
+  RaitoOptions,
+  isConnectionString,
+  ConnectionString,
+  connectionStringRegex,
+  isConnectionOptions,
 } from '@src/types';
 import WebSocket from 'ws';
 import { RaitoResultException } from './RaitoResultException';
+import { RaitoConnectionException } from './RaitoConnectionException';
 
 export class Raito implements IRaito {
+  public static raitoInstance: Raito | null;
   private wss: WebSocket;
   private isConnected: boolean = false;
+  private options: ConnectionOptions;
 
-  constructor(private readonly options?: ConnectionOptions) {
-    const connectionStr = `ws://${options?.host || 'localhost'}:${options?.port || 9180}`;
+  constructor(options?: RaitoOptions) {
+    this.options = this.parseOptions(options);
+    const connectionStr = `ws://${this.options?.host || 'localhost'}:${this.options?.port || 9180}`;
     this.wss = new WebSocket(connectionStr);
     this.handleConnection();
+    Raito.raitoInstance = this;
   }
 
   public async get(key: string): Promise<ICache | null> {
@@ -54,7 +64,7 @@ export class Raito implements IRaito {
     await this.handleResult();
   }
 
-  public close(): void {
+  public shutdown(): void {
     if (
       this.wss.readyState === WebSocket.OPEN ||
       this.wss.readyState === WebSocket.CONNECTING
@@ -103,4 +113,32 @@ export class Raito implements IRaito {
       });
     });
   }
+
+  private parseOptions(options?: RaitoOptions): ConnectionOptions {
+    if (typeof options === 'number') {
+      return { port: options };
+    }
+    if (isConnectionString(options)) {
+      return this.parseConnectionString(options);
+    }
+    if (isConnectionOptions(options)) {
+      return options;
+    }
+    return {};
+  }
+
+  private parseConnectionString = (
+    url: ConnectionString,
+  ): ConnectionOptions => {
+    const match = url.match(connectionStringRegex);
+    if (!match?.[1] || !match?.[2]) {
+      throw new RaitoConnectionException(`Invalid connection string format`);
+    }
+
+    return {
+      host: match[1],
+      port: parseInt(match[2], 10),
+      ttl: match[3] ? parseInt(match[3], 10) : undefined,
+    };
+  };
 }

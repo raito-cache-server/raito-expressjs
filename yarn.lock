@@ -535,9 +535,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@raito/expressjs@workspace:.":
+"@raito-cache/expressjs@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@raito/expressjs@workspace:."
+  resolution: "@raito-cache/expressjs@workspace:."
   dependencies:
     "@commitlint/cli": "npm:^19.6.0"
     "@commitlint/config-conventional": "npm:^19.6.0"

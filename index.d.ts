@@ -9,26 +9,27 @@ interface IRaito {
   get(key: string): Promise<ICache | null>;
   set(key: string, data: any, ttl?: number): Promise<void>;
   clear(key: string | 'all'): Promise<void>;
-  close(): void;
+  shutdown(): void;
 }
 
-export type ConnectionOptions = {
+type ConnectionOptions = {
   host?: string;
   port?: number;
   ttl?: number;
 };
+type ConnectionString =
+  | `raito://${string}:${number}?ttl=${number}`
+  | `raito://${string}:${number}`;
+type RaitoOptions = ConnectionOptions | ConnectionString | number;
 
 export class Raito implements IRaito {
-  constructor(options?: ConnectionOptions);
+  constructor(options?: RaitoOptions);
   public get(key: string): Promise<ICache | null>;
   public set(key: string, data: any, ttl?: number): Promise<void>;
   public clear(key: string | 'all'): Promise<void>;
-  public close(): void;
+  public shutdown(): void;
 }
 
-export function cacheMiddleware(
-  raito: Raito,
-  customTtl?: number,
-): Promise<void>;
+export function cacheResponse(raito: Raito, customTtl?: number): Promise<void>;
 
 export {};

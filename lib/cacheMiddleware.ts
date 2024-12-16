@@ -1,7 +1,13 @@
 import e, { NextFunction } from 'express';
 import { Raito } from './raito';
+import { RaitoConnectionException } from './RaitoConnectionException';
 
-export const cacheMiddleware = (raito: Raito, customTtl?: number) => {
+export const cacheResponse = (customTtl?: number) => {
+  const raito = Raito.raitoInstance;
+  if (!raito) {
+    throw new RaitoConnectionException(`Failed to connect with Raito server`);
+  }
+
   return async function (req: e.Request, res: e.Response, next: NextFunction) {
     const key = `${req.method}:${req.originalUrl || req.url}`;
     const foundCache = await raito.get(key);
