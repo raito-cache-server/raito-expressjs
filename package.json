@@ -1,6 +1,6 @@
 {
   "name": "@raito-cache/expressjs",
-  "version": "0.0.1-s.1",
+  "version": "0.0.2",
   "description": "API and middleware for expressjs to communicate with raito-cache server",
   "main": "dist/index.js",
   "types": "index.d.ts",
@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "npx tsc",
+    "build": "npx tsc && npx tsc-alias -p tsconfig.json",
     "start": "tsx bin/index.ts",
     "start:dev": "tsx watch bin/index.ts",
     "start:prod": "node dist/bin/index.js",
@@ -50,6 +50,7 @@
     "globals": "^15.12.0",
     "husky": "^9.1.7",
     "prettier": "^3.3.3",
+    "tsc-alias": "^1.8.10",
     "tsx": "^4.7.1",
     "typescript": "^5.7.2",
     "typescript-eslint": "^8.16.0"
