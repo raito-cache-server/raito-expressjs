@@ -40,7 +40,7 @@ const raito = new Raito(); // defaul connection is localhost:9180
 
 #### 3. Use middleware
 ```typescript
-import { cacheMiddleware } from '@raito-cache/expressjs'
+import { cacheResponse } from '@raito-cache/expressjs'
 
 app.get('/api/route', cacheResponse());
 ```
@@ -79,7 +79,7 @@ await raito.shutdown(); // Close connection
 
 **Express.js middleware**
 ```typescript
-import { cacheMiddleware } from '@raito-cache/expressjs'
+import { cacheResponse } from '@raito-cache/expressjs'
 import { Raito } from '@raito-cache/expressjs';
 
 const raito = new Raito();
