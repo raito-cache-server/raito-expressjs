@@ -42,7 +42,7 @@ const raito = new Raito(); // defaul connection is localhost:9180
 ```typescript
 import { cacheMiddleware } from '@raito-cache/expressjs'
 
-app.get('/api/route', cacheResponse);
+app.get('/api/route', cacheResponse());
 ```
 
 ## API
@@ -84,7 +84,7 @@ import { Raito } from '@raito-cache/expressjs';
 
 const raito = new Raito();
 
-app.get('/api/route', cacheResponse); // Caches responses
+app.get('/api/route', cacheResponse()); // Caches responses
 app.get('/api/timeSensetive/data', cacheResponse(15000)); // Cache response with setting record ttl
 ```
 
