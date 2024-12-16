@@ -26,4 +26,9 @@ export class Raito implements IRaito {
   public close(): void;
 }
 
+export function cacheMiddleware(
+  raito: Raito,
+  customTtl?: number,
+): Promise<void>;
+
 export {};
