@@ -1,9 +1,4 @@
-# yarn
-.yarn
-
-# IDE
-.idea
-
+### Node template
 # Logs
 logs
 *.log
