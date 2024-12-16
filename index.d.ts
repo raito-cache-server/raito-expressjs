@@ -30,6 +30,6 @@ export class Raito implements IRaito {
   public shutdown(): void;
 }
 
-export function cacheResponse(raito: Raito, customTtl?: number): Promise<void>;
+export function cacheResponse(customTtl?: number): Promise<void>;
 
 export {};
