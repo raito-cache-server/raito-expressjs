@@ -1,6 +1,6 @@
 {
   "name": "@raito-cache/expressjs",
-  "version": "0.0.1",
+  "version": "0.0.1-s.1",
   "description": "API and middleware for expressjs to communicate with raito-cache server",
   "main": "dist/index.js",
   "types": "index.d.ts",
