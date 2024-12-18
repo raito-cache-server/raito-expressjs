@@ -1,6 +1,6 @@
 {
   "name": "@raito-cache/expressjs",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "API and middleware for expressjs to communicate with raito-cache server",
   "main": "dist/index.js",
   "types": "index.d.ts",
@@ -33,6 +33,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@raito-cache/client": "latest",
     "ws": "^8.18.0"
   },
   "devDependencies": {

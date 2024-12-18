@@ -18,7 +18,7 @@
 
 ## About
 
-**raito-expressjs** - is an express.js middleware and API for communicating with **[Raito](https://github.com/stbestichhh/raito-cache) cache server**. 
+**raito-expressjs** - is an express.js middleware and API for communicating with **[Raito](https://github.com/stbestichhh/raito-cache) cache server**.
 
 ## Getting started
 
@@ -31,7 +31,7 @@
   $ yarn add @raito-cache/expressjs
   ```
 
-#### 2. Connect to Raito 
+#### 2. Connect to Raito
 ```typescript
 import { Raito } from '@raito-cache/expressjs';
 
@@ -68,7 +68,7 @@ import { Raito } from '@raito-cache/expressjs';
 
 const raito = new Raito();
 
-await raito.set('key', { data: 'some data' }); // Create new record 
+await raito.set('key', { data: 'some data' }); // Create new record
 await raito.set('key2', 'other data', 15000); // Create new record with 15s ttl
 
 await raito.get('key2'); // Output: { key: 'key', data: 'other data', createdAt: Date, ttl: 15000 }
@@ -105,7 +105,7 @@ services:
     image: stbestich/raito-cache:latest
     ports:
       - "${PORT:-9180}:${PORT:-9180}"
-      - "${PORT:-9181}:${PORT:-9181" # Define second port if you need http proxy 
+      - "${PORT:-9181}:${PORT:-9181" # Define second port if you need http proxy
     env_file:
       - .env
     environment:
