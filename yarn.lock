@@ -535,6 +535,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@raito-cache/client@npm:latest":
+  version: 0.0.2
+  resolution: "@raito-cache/client@npm:0.0.2"
+  dependencies:
+    ws: "npm:^8.18.0"
+  checksum: 10c0/6d5ba0e45ffaa28edc33461dc2088d41c86f3ba15b92b5cb3453937b2a6a7b4e4271dd58673d16710348733cf27efa7cf8e6cba7162c6c9a3792b8957fb94c9d
+  languageName: node
+  linkType: hard
+
 "@raito-cache/expressjs@workspace:.":
   version: 0.0.0-use.local
   resolution: "@raito-cache/expressjs@workspace:."
@@ -543,6 +552,7 @@ __metadata:
     "@commitlint/config-conventional": "npm:^19.6.0"
     "@commitlint/types": "npm:^19.5.0"
     "@eslint/js": "npm:^9.15.0"
+    "@raito-cache/client": "npm:latest"
     "@types/express": "npm:^5.0.0"
     "@types/node": "npm:^22.9.3"
     "@types/ws": "npm:^8.5.13"

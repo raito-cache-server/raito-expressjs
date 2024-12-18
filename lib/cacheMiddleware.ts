@@ -1,9 +1,9 @@
 import e, { NextFunction } from 'express';
-import { Raito } from './raito';
+import { Raito } from '@raito-cache/client';
 import { RaitoConnectionException } from './RaitoConnectionException';
 
 export const cacheResponse = (customTtl?: number) => {
-  const raito = Raito.raitoInstance;
+  const raito = Raito.instance;
   if (!raito) {
     throw new RaitoConnectionException(`Failed to connect with Raito server`);
   }
@@ -13,7 +13,6 @@ export const cacheResponse = (customTtl?: number) => {
     const foundCache = await raito.get(key);
 
     if (foundCache) {
-      console.log('Took from cache');
       res.send(foundCache.data);
       return;
     } else {
